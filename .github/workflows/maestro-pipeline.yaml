@@ -1,3 +1,4 @@
+# .github/workflows/maestro-tests.yaml
 name: Maestro UI Testing
 
 on:
@@ -22,15 +23,29 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Calculator Tests
-        run: npm run test:calculator
-        env:
-          CI: true
+      # Install Maestro CLI
+      - name: Install Maestro CLI
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          maestro --version  # Verify installation
 
+      # Setup and run Android Emulator
+      - name: Setup AVD and Run Test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          target: default
+          arch: x86_64
+          script: |
+            echo "Emulator is running"
+            maestro --device emulator-5554 test -e APP_ID=com.google.android.calculator --format junit --debug-output debug-logs/ android/tests
+        continue-on-error: false
+
+      # Upload test reports
       - name: Upload Test Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: junit-report
-          path: debug-logs/output.xml
+          path: debug-logs/
           retention-days: 30
