@@ -28,6 +28,9 @@ jobs:
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
           echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $GITHUB_ENV
+          echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $HOME/.bashrc
+          echo 'PATH after Maestro installation:' $PATH
+          maestro --version
 
       # Setup and run Android Emulator
       - name: Setup AVD and Run Test
@@ -37,7 +40,9 @@ jobs:
           target: default
           arch: x86_64
           script: |
-            echo "Emulator is running"
+            echo "Starting Emulator and Running Tests"
+            source $HOME/.bashrc  # Load the updated PATH in this session
+            maestro --version      # Verify Maestro is in the PATH
             maestro --device emulator-5554 test -e APP_ID=com.google.android.calculator --format junit --debug-output debug-logs/ android/tests
         continue-on-error: false
 
