@@ -27,7 +27,7 @@ jobs:
       - name: Install Maestro CLI
         run: |
           curl -Ls "https://get.maestro.mobile.dev" | bash
-          maestro --version  # Verify installation
+          echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $GITHUB_ENV
 
       # Setup and run Android Emulator
       - name: Setup AVD and Run Test
