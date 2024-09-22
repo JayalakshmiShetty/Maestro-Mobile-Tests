@@ -23,17 +23,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Install Maestro CLI
-      - name: Install Maestro CLI
+      # Install Maestro CLI and Verify
+      - name: Install and Verify Maestro CLI
         run: |
+          # Install Maestro CLI
           curl -Ls "https://get.maestro.mobile.dev" | bash
-          echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $GITHUB_ENV
+          
+          # Add Maestro to PATH
           echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $HOME/.bashrc
-          echo 'PATH after Maestro installation:' $PATH
+          export PATH="$PATH:$HOME/.maestro/bin"
+          
+          # Verify Installation
+          echo "PATH after Maestro installation: $PATH"
           maestro --version
 
-      # Setup and run Android Emulator
-      - name: Setup AVD and Run Test
+      # Setup and run Android Emulator and Test in One Step
+      - name: Setup AVD and Run Tests with Maestro
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
@@ -41,8 +46,12 @@ jobs:
           arch: x86_64
           script: |
             echo "Starting Emulator and Running Tests"
-            source $HOME/.bashrc  # Load the updated PATH in this session
-            maestro --version      # Verify Maestro is in the PATH
+            
+            # Export Maestro PATH for this session
+            export PATH="$PATH:$HOME/.maestro/bin"
+            
+            # Verify Maestro is in PATH and run tests
+            maestro --version
             maestro --device emulator-5554 test -e APP_ID=com.google.android.calculator --format junit --debug-output debug-logs/ android/tests
         continue-on-error: false
 
