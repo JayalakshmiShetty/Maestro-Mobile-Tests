@@ -1,0 +1,11 @@
+appId: ${APP_ID}
+---
+- launchApp:
+    appId: ${APP_ID}
+    stopApp: true
+    clearState: true
+- runScript:
+    file: '../test-data/test-data.js'
+    label: 'Load test data'
+
+

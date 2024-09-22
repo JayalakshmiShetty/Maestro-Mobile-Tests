@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+  <testsuite name="Test Suite" device="emulator-5554" tests="4" failures="0" time="100">
+    <testcase id="Verify user is able to perform adddition" name="Verify user is able to perform adddition" classname="Verify user is able to perform adddition" time="27" status="SUCCESS"/>
+    <testcase id="Verify user is able to perform calculations" name="Verify user is able to perform calculations" classname="Verify user is able to perform calculations" time="21" status="SUCCESS"/>
+    <testcase id="Verify user is able to perform subtraction" name="Verify user is able to perform subtraction" classname="Verify user is able to perform subtraction" time="21" status="SUCCESS"/>
+    <testcase id="Verify user is able to perform multiplication" name="Verify user is able to perform multiplication" classname="Verify user is able to perform multiplication" time="31" status="SUCCESS"/>
+  </testsuite>
+</testsuites>

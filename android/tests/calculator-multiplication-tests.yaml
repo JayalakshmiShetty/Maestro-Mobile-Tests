@@ -1,0 +1,44 @@
+appId: ${APP_ID}
+name: Verify user is able to perform multiplication
+# Test Suite for Calculator Application
+jsEngine: graaljs
+---
+
+# Launch the app and navigate through the splash screen
+- runFlow:
+    file: '../splash/splash.yaml'
+    label: 'Launch app'
+
+# Perform multiplication operation
+- runFlow:
+    file: '../calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute single digit multiplication operation'
+    env: 
+        FIRST_OPERAND: ${output.multiplication.singleDigit.operand1}
+        SECOND_OPERAND: ${output.multiplication.singleDigit.operand2}
+        OPERATOR: ${output.multiplication.operator}
+        EXPECTED_RESULT: ${output.multiplication.singleDigit.result}
+
+- stopApp:
+    appId: ${APP_ID}
+    label: 'Stop app'
+
+
+# Launch the app and navigate through the splash screen
+- runFlow:
+    file: '../splash/splash.yaml'
+    label: 'Launch app'
+
+- runFlow:
+    file: '../calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute multi digit multiplication operation'
+    env: 
+        FIRST_OPERAND: ${output.multiplication.multiDigit.operand1}
+        SECOND_OPERAND: ${output.multiplication.multiDigit.operand2}
+        OPERATOR: ${output.multiplication.operator}
+        EXPECTED_RESULT: ${output.multiplication.multiDigit.result}
+
+
+- stopApp:
+    appId: ${APP_ID}
+    label: 'Stop app'

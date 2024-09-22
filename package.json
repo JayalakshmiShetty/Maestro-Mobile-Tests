@@ -1,0 +1,9 @@
+{
+  "name": "maestro-mobile-tests",
+  "version": "1.0.0",
+  "description": "Mobile automation testing with JavaScript and YAML",
+  "scripts": {
+    "test:calculator": "maestro --device emulator-5554 test -e APP_ID=com.google.android.calculator --format junit --debug-output debug-logs/ android/tests",
+    "test:record": "maestro record android/tests/calculator-addition-tests.yaml -e APP_ID=com.google.android.calculator --debug-output debug-logs/"
+  }
+}

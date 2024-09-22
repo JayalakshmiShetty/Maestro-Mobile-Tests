@@ -1,0 +1,41 @@
+appId: ${APP_ID}
+---
+- evalScript: ${output.firstOperandCounter = 0}
+- evalScript: ${output.firstOperands = FIRST_OPERAND.toString().split(',')}
+- evalScript: ${output.firstOperandsLength = output.firstOperands.length}
+- repeat:
+    while: 
+        true: ${output.firstOperandCounter < output.firstOperandsLength}
+    commands: 
+        - evalScript: ${output.operand1 = output.firstOperands[output.firstOperandCounter].toString().trim()}
+        - tapOn:
+            text: ${output.operand1}
+        - evalScript: ${output.firstOperandCounter = output.firstOperandCounter + 1}
+  
+
+# Tap on the operator (e.g., +, -, *, /)
+- tapOn:
+    text: ${OPERATOR}
+
+# Tap on the second operand
+- evalScript: ${output.secondOperandCounter = 0}
+- evalScript: ${output.secondOperands = SECOND_OPERAND.toString().split(',')}
+- evalScript: ${output.secondOperandsLength = output.secondOperands.length}
+- repeat:
+    while: 
+        true: ${output.secondOperandCounter < output.secondOperandsLength}
+    commands: 
+        - evalScript: ${output.operand2 = output.secondOperands[output.secondOperandCounter].toString().trim()}
+        - tapOn:
+            text: ${output.operand2}
+        - evalScript: ${output.secondOperandCounter = output.secondOperandCounter + 1}
+
+
+# Tap on the equals button to perform the calculation
+- tapOn:
+    text: "equals"
+
+# Assert that the expected result is visible on the calculator screen
+- assertVisible:
+    text: ${EXPECTED_RESULT}
+    index: 0

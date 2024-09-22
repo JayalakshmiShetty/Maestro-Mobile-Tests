@@ -1,0 +1,35 @@
+appId: ${APP_ID}
+name: Verify user is able to perform calculations
+# Test Suite for Calculator Application
+jsEngine: graaljs
+---
+
+# Launch the app and navigate through the splash screen
+- runFlow:
+    file: '../splash/splash.yaml'
+    label: 'Launch app'
+
+# Perform addition operation
+- runFlow:
+    file: '../calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute single digit addition operation'
+    env: 
+        FIRST_OPERAND: ${output.addition.singleDigit.operand1}
+        SECOND_OPERAND: ${output.addition.singleDigit.operand2}
+        OPERATOR: ${output.addition.operator}
+        EXPECTED_RESULT: ${output.addition.singleDigit.result}
+
+
+- runFlow:
+    file: '../calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute multi digit addition operation'
+    env: 
+        FIRST_OPERAND: ${output.addition.multiDigit.operand1}
+        SECOND_OPERAND: ${output.addition.multiDigit.operand2}
+        OPERATOR: ${output.addition.operator}
+        EXPECTED_RESULT: ${output.addition.multiDigit.result}
+
+
+- stopApp:
+    appId: ${APP_ID}
+    label: 'Stop app'
