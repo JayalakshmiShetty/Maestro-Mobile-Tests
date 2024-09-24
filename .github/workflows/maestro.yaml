@@ -23,12 +23,16 @@ jobs:
 
       - name: Install and Verify Maestro CLI
         run: |
+          # Remove existing installation (if any)
+          rm -rf $HOME/.maestro
+          
           # Install Maestro CLI
           curl -Ls "https://get.maestro.mobile.dev" | bash
           
           # Add Maestro to PATH
           echo 'export PATH="$PATH:$HOME/.maestro/bin"' >> $GITHUB_ENV
-          
+          source $GITHUB_ENV
+
           # Verify Maestro installation
           ~/.maestro/bin/maestro --version || echo "Maestro installation failed"
 
@@ -40,15 +44,19 @@ jobs:
           # Verify Global Installation
           maestro --version || echo "Global Maestro installation failed"
 
+      - name: Verify Java Installation
+        run: java -version
+
       - name: Debug Maestro Installation
         run: |
           # Print PATH and check locations
           echo "PATH: $PATH"
+          echo "Home Directory: $HOME"
           ls -la $HOME/.maestro/bin/
           which maestro
 
       - name: Run Maestro tests on Maestro Cloud
-        run: ~/.maestro/bin/maestro cloud -e APP_ID=com.google.android.calculator --apiKey=${{ secrets.MAESTRO_CLOUD_API_KEY }} --app-file=app/Calculator.apk android
+        run: /usr/local/bin/maestro cloud -e APP_ID=com.google.android.calculator --apiKey=${{ secrets.MAESTRO_CLOUD_API_KEY }} --app-file=app/Calculator.apk android
         env:
           MAESTRO_CLOUD_API_KEY: 164a4ca2-3f65-44ab-bf1c-2bde9a858fac
           MAESTRO_PROJECT_ID: ${APP_ID }
