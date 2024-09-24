@@ -36,4 +36,4 @@ jobs:
         run: npm run test
         env:
           MAESTRO_CLOUD_API_KEY: 164a4ca2-3f65-44ab-bf1c-2bde9a858fac
-          MAESTRO_PROJECT_ID: ${{ APP_ID }}
+          MAESTRO_PROJECT_ID: ${ APP_ID }
