@@ -57,6 +57,17 @@ jobs:
           echo "Classpath: $(java -cp $HOME/.maestro/maestro.jar -verbose)"
           ls -la $HOME/.maestro/
 
+      - name: Install Maestro CLI with Logs
+        run: |
+          # Remove previous installation
+          rm -rf $HOME/.maestro
+
+           # Install Maestro CLI
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+
+          # Check installation contents
+          ls -la $HOME/.maestro
+
       - name: Run Maestro tests on Maestro Cloud
         run: java -cp $HOME/.maestro/maestro.jar maestro.cli.AppKt cloud -e APP_ID=com.google.android.calculator --apiKey=${{ secrets.MAESTRO_CLOUD_API_KEY }} --app-file=app/Calculator.apk android
         env:
