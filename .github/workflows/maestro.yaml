@@ -36,10 +36,10 @@ jobs:
 
       - name: Uninstall Existing Homebrew Installation
         run: |
-        brew uninstall maestro
-        rm -rf $HOME/.maestro  # Clean up any residual installation files
-        brew cleanup -s
-        echo "Uninstalled existing Maestro CLI managed by Homebrew."
+          brew uninstall maestro
+          rm -rf $HOME/.maestro  # Clean up any residual installation files
+          brew cleanup -s
+          echo "Uninstalled existing Maestro CLI managed by Homebrew."
 
       - name: Install Maestro CLI Globally
         run: |
