@@ -49,7 +49,7 @@ jobs:
         run: ls -la $HOME/.maestro
 
       - name: Verify APK File Path
-        run: ls -la app/
+        run: ls -la android/app/
 
       - name: Debug Java Classpath and Maestro Installation
         run: |
