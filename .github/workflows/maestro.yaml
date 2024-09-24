@@ -34,6 +34,13 @@ jobs:
           # Verify Maestro installation
           ~/.maestro/bin/maestro --version || echo "Maestro installation failed"
 
+      - name: Uninstall Existing Homebrew Installation
+        run: |
+        brew uninstall maestro
+        rm -rf $HOME/.maestro  # Clean up any residual installation files
+        brew cleanup -s
+        echo "Uninstalled existing Maestro CLI managed by Homebrew."
+
       - name: Install Maestro CLI Globally
         run: |
           # Move Maestro CLI to a globally accessible path
