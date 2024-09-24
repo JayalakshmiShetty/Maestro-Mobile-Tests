@@ -113,6 +113,25 @@ tests/: Contains the main test suite files for execution.
 ```
 **NOTE** : To enable execution in Maestro Cloud, I have removed the tests/ folder because all flows need to be at the same directory level.
 
+### 📹 Successful Execution Recordings
+`calculator-addition-tests.yaml`
+
+![video-to-gif-converter](https://github.com/user-attachments/assets/accc05c7-0ae9-4d95-83ed-a90a28b1a4cb)
+
+`calculator-division-tests.yaml`
+
+![video-to-gif-converter (1)](https://github.com/user-attachments/assets/60b00251-2628-46a0-a3f2-9cc227a66562)
+
+`calculator-subtraction-tests.yaml`
+
+![subtraction-test](https://github.com/user-attachments/assets/108ad969-91a9-49a1-ac46-dc67768483d2)
+
+`calculator-multiplication-tests.yaml`
+
+![multiplication-test](https://github.com/user-attachments/assets/f4afbb58-2eb9-4642-96ca-59201b0b8ae5)
+
+
+
 ### 🏃🏽 How to run the tests on Maestro Cloud
 1. Open the terminal in the project root directory and login to the CLI by running this command.
    
@@ -125,6 +144,10 @@ tests/: Contains the main test suite files for execution.
    maestro cloud -e APP_ID=<APP_ID> APP_ID=com.google.android.calculator --apiKey=<API_KEY> --app-file=app/Calculator.apk android"'
 
    ```
-   ![maestro-cloud-terminal](https://github.com/marizala/maestro-automation/assets/37069334/5c862851-9cea-4c4a-ac5c-24e77c29bc70)
 
-   ![maestro-cloud](https://github.com/marizala/maestro-automation/assets/37069334/2082d15d-294d-4c03-8e7b-9b1afbba6f3e)
+  <img width="1265" alt="Successful Maestro Cloud Upload Screenshot" src="https://github.com/user-attachments/assets/1a2bdde7-8004-4b2e-ab87-9516569ce844">
+  
+![Video of Successful Maestro Cloud Execution ](https://github.com/user-attachments/assets/03b0c00b-a13f-441c-8be5-c6f70c66d66a)
+
+
+   
