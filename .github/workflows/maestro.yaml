@@ -32,6 +32,20 @@ jobs:
           # Verify Maestro installation
           maestro --version || echo "Maestro installation failed"
 
+      - name: Install Maestro CLI Globally
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          sudo mv $HOME/.maestro/bin/maestro /usr/local/bin/
+    
+          # Verify Installation
+          maestro --version      
+
+      - name: Debug Maestro Installation
+        run: |
+          echo "PATH: $PATH"
+          ls -la $HOME/.maestro/bin/
+          which maestro
+
       - name: Run Maestro tests on Maestro Cloud
         run: npm run test:calculation:cloud
         env:
