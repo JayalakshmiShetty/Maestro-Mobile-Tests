@@ -1,0 +1,34 @@
+appId: ${APP_ID}
+name: Verify user is able to perform division
+# Test Suite for Calculator Application
+jsEngine: graaljs
+---
+
+# Launch the app and navigate through the splash screen
+- runFlow:
+    file: 'splash/splash.yaml'
+    label: 'Launch app'
+
+# Perform division operation
+- runFlow:
+    file: 'calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute single digit division operation'
+    env: 
+        FIRST_OPERAND: ${output.division.singleDigit.operand1}
+        SECOND_OPERAND: ${output.division.singleDigit.operand2}
+        OPERATOR: ${output.division.operator}
+        EXPECTED_RESULT: ${output.division.singleDigit.result}
+
+
+- runFlow:
+    file: 'calculator/perform-operation.yaml'
+    label: 'TESTCASE: Execute multi digit division operation'
+    env: 
+        FIRST_OPERAND: ${output.division.multiDigit.operand1}
+        SECOND_OPERAND: ${output.division.multiDigit.operand2}
+        OPERATOR: ${output.division.operator}
+        EXPECTED_RESULT: ${output.division.multiDigit.result}
+
+- stopApp:
+    appId: ${APP_ID}
+    label: 'Stop app'

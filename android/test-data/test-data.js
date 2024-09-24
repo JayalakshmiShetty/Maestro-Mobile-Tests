@@ -7,9 +7,9 @@ output.addition = {
         result: 5
     },
     multiDigit: {
-        operand1: '1,1',
-        operand2: '2,4',
-        result: 35
+        operand1: '1,1,0',
+        operand2: '2,0',
+        result: 130
     }
 }
 
@@ -18,12 +18,12 @@ output.subtraction = {
     operator: 'minus',
     singleDigit: {
         operand1: 9,
-        operand2: 4,
-        result: 5
+        operand2: 3,
+        result: 6
     },
     multiDigit: {
-        operand1: '3,2',
-        operand2: '2,9',
+        operand1: '4,2',
+        operand2: '3,9',
         result: 3
     }
 }
@@ -51,9 +51,9 @@ output.division = {
         result: 2
     },
     multiDigit: {
-        operand1: '1,0,0',
+        operand1: '1,0,0,0',
         operand2: '2,0',
-        result: 5
+        result: 50
     }
 }
 

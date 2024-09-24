@@ -6,12 +6,12 @@ jsEngine: graaljs
 
 # Launch the app and navigate through the splash screen
 - runFlow:
-    file: '../splash/splash.yaml'
+    file: 'splash/splash.yaml'
     label: 'Launch app'
 
 # Perform subtraction operation
 - runFlow:
-    file: '../calculator/perform-operation.yaml'
+    file: 'calculator/perform-operation.yaml'
     label: 'TESTCASE: Execute single digit subtraction operation'
     env: 
         FIRST_OPERAND: ${output.subtraction.singleDigit.operand1}
@@ -21,7 +21,7 @@ jsEngine: graaljs
 
 
 - runFlow:
-    file: '../calculator/perform-operation.yaml'
+    file: 'calculator/perform-operation.yaml'
     label: 'TESTCASE: Execute multi digit subtraction operation'
     env: 
         FIRST_OPERAND: ${output.subtraction.multiDigit.operand1}

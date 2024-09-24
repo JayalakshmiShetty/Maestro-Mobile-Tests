@@ -75,17 +75,7 @@ Remove the Calculator app from your device before reinstalling:
 adb -s 4a55444957393498 uninstall com.google.android.calculator
 ```
 
-### Directory Structure
-- **configs/**: Contains device and environment configuration files.
-- **pages/**: Page Object files encapsulating UI elements and actions.
-- **tests/**: Test suite files defining various test cases.
-- **apps/**: APK files for the Calculator application.
-- **results/**: Directory for storing test execution results and reports.
-- **logs/**: Log files for tracking test execution details.
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-```
 
 ### Summary of Changes:
 1. **About the Project:** Briefly describes the purpose and structure of the project.
