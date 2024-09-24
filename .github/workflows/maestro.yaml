@@ -33,7 +33,7 @@ jobs:
           maestro --version || echo "Maestro installation failed"
 
       - name: Run Maestro tests on Maestro Cloud
-        run: npm run test
+        run: npm run test:calculation:cloud
         env:
           MAESTRO_CLOUD_API_KEY: 164a4ca2-3f65-44ab-bf1c-2bde9a858fac
           MAESTRO_PROJECT_ID: ${ APP_ID }
